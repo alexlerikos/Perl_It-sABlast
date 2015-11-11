@@ -9,7 +9,7 @@ $/ = ""; #set to paragraph mode
 $input_query_file = "q_test_string.txt";
 
 # file to handle the input data used to build our associative arrays
-$input_data_file = "perlblastdatas.txt";
+$input_data_file = "perlblastdata.txt";
 
 open(QUERY, "$input_query_file");
 open(DATA_IN,"$input_data_file");
