@@ -3,6 +3,7 @@
 
 
 #Set up file i/o
+$/ = ""; #set to paragraph mode
 
 # file to handle the input query
 $input_query_file = "q_test_string.txt";
@@ -44,8 +45,8 @@ while (length($query) >= $k) {
                                   # where the k-mer is first found.
     $kmer{$1} = $i;       
    }
- $i++;
-  $query = substr($query, 1, length($query) -1);
+   $i++;
+   $query = substr($query, 1, length($query) -1);
 }
 
 %stringHash = (); #hash table to hold matching strings to reduce errors
@@ -62,11 +63,6 @@ while($line = <DATA_IN>){
 	   	if (defined $kmer{$1}) {      
 	    	$L  = 0; #store length of query and database matching charatures
 	    	$j = 0;
-	    	# $subStart = $m;
-	    	# print "$query\n";
-	    	# print "$kmer{$1}\n";
-	    	# print "queryArray[$kmer{$1}]: $queryArray[$kmer{$1}]\n";
-	    	# print "dataBaseLineArray[$m]: $dataBaseLineArray[$m]\n";
 
 	    	#check charactures to right of starting index of matching kmer for matches
 	    	while ($queryArray[$kmer{$1}+$j] eq $dataBaseLineArray[$i+$j]){
@@ -74,8 +70,8 @@ while($line = <DATA_IN>){
 	    		$j++;
 	    		$L++;
 	    	}
-	    	$subEnd = $i+$j;
-	    	$j = 0;
+	    	$subEnd = $i+$j-1;
+	    	$j = 1;
 
 	    	#check charatures to the left of the matching kmer starting index for match
 	    	while ($queryArray[$kmer{$1}-$j] eq $dataBaseLineArray[$i-$j]){
@@ -83,13 +79,13 @@ while($line = <DATA_IN>){
 	    		$j++;
 	    		$L++;
 	    	}
-	    	$subStart = $i-$j;
+	    	$subStart = $i-$j+1;
 	    	#create string of all matching chars 
 	    	$matchString = join('',@dataBaseLineArray[$subStart..$subEnd]);
 	    	# print("Matching string: $matchString\n");
 
 	    	if (!defined $stringHash{$subStart}){
-	    		$stringHash{$subStartcl} = $matchString;
+	    		$stringHash{$subStart} = $matchString;
 	    		print("Matching string: $matchString\n");
 	    		if ($L > 10){
 	    			print "Good HSP has been found\n";
@@ -101,10 +97,3 @@ while($line = <DATA_IN>){
 	 	$line = substr($line, 1, length($line) -1);
 	}
 }
-
-# foreach $kmerkey (keys(%kmer)) {
-#  print "The first occurrence of string $kmerkey is in position 
-#  $kmer{$kmerkey}\n";
-# }
-
-
