@@ -1,6 +1,6 @@
 #!/pkg/bin/perl -w
 # Program perl_ItsABlast.pl
-
+# Copywrite Alex Lerikos 2015
 
 #Set up file i/o
 $/ = ""; #set to paragraph mode
