@@ -26,7 +26,7 @@ $k = 4;
 
 %kmer = ();                      # This initializes the hash called kmer.
 #set up variable for indexing kmer array
-#we use zero index because THIS IS AMERICA!! (*queue explosions and bald eagles)
+#we use a zero index because THIS IS AMERICA!! (*queue explosions and bald eagles)
 $i = 0;
 # read in $query and set up kmer hash
 while (length($query) >= $k) {
@@ -58,7 +58,7 @@ while($line = <DATA_IN>){
 	   		foreach $querylocation (@{$kmer{$1}}){
 	   			# print "query location: $querylocation\n";
 	   		      
-		    	$L  = 0; #store length of query and database matching charatures
+		    	$L  = 0; #store length of query and database matching chars
 		    	$j = 0;
 
 		    	#check charactures to right of starting index of matching kmer for matches
