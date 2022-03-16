@@ -5,7 +5,7 @@ This is a toy commandline [BLAST](http://blast.ncbi.nlm.nih.gov/Blast.cgi) (Basi
 It uses 1 query string and 1 database string to find all high scoring string matches between the query string and the database string. 
 The program uses the k-value (`line 25: perl_ItsABlast.pl`) to set the length of the substrings matched between the database string and the query string.
 
-##How to Use
+## How to Use
 
 1. Download repository contents
 
